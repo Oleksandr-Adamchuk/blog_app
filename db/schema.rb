@@ -10,16 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_13_074938) do
+ActiveRecord::Schema.define(version: 2018_05_13_100738) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "commentable_type"
-    t.integer "commentable_id"
-    t.index ["commentable_type", "commentable_id"], name: "index_categories_on_commentable_type_and_commentable_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -27,6 +24,8 @@ ActiveRecord::Schema.define(version: 2018_05_13_074938) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "commentable_type"
+    t.integer "commentable_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -34,11 +33,8 @@ ActiveRecord::Schema.define(version: 2018_05_13_074938) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "commentable_type"
-    t.integer "commentable_id"
     t.integer "category_id"
     t.index ["category_id"], name: "index_posts_on_category_id"
-    t.index ["commentable_type", "commentable_id"], name: "index_posts_on_commentable_type_and_commentable_id"
   end
 
 end

@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :category do
-    name "MyString"
-    desc "MyString"
+  factory :category, class: Category do
+    name { Faker::Lorem.word }
+    desc { Faker::Lorem.paragraph }
   end
 end
